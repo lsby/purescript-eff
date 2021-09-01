@@ -1,6 +1,6 @@
 module Control.Monad.Eff.Class where
 
-import Control.Category (id)
+import Control.Category (identity)
 import Control.Monad (class Monad)
 import Control.Monad.Eff (Eff)
 
@@ -20,4 +20,4 @@ class Monad m <= MonadEff eff m | m -> eff where
   liftEff :: forall a. Eff eff a -> m a
 
 instance monadEffEff :: MonadEff eff (Eff eff) where
-  liftEff = id
+  liftEff = identity
